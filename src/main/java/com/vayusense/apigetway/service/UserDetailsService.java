@@ -1,6 +1,9 @@
 package com.vayusense.apigetway.service;
 
 import com.vayusense.apigetway.dto.AuthResponse;
+import com.vayusense.apigetway.entities.Address;
+import com.vayusense.apigetway.entities.Company;
+import com.vayusense.apigetway.entities.Role;
 import com.vayusense.apigetway.entities.User;
 import com.vayusense.apigetway.repository.UserRepository;
 import com.vayusense.apigetway.util.JWTUtil;
@@ -11,9 +14,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-/*import reactor.core.publisher.Flux;
+import reactor.core.publisher.Flux;
 import javax.annotation.PostConstruct;
-import java.util.Arrays;*/
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 @Service
@@ -27,21 +32,35 @@ public class UserDetailsService {
 /*
    @PostConstruct
     public void init(){
-        //username:passwowrd -> user:user
-        User user = new User("user", passwordEncoder.encode("user"),"daniel1@vayusense.com","vayusense", true, Arrays.asList(Role.ROLE_USER));
-        User userA = new User("admin", passwordEncoder.encode("admin"),"daniel@vayusense.com","vayusense", true, Arrays.asList(Role.ROLE_ADMIN));
+        List<String> products = new ArrayList<String>();
+        List<String> productsU = new ArrayList<String>();
+        Company company = new Company();
+        Company companyU = new Company();
+        company.setCompanyName("vayusense");
+        companyU.setCompanyName("vayusense");
+        products.add("tobra");
+        products.add("agent");
+        products.add("vayumeter");
+        productsU.add("tobra");
+        company.setProducts(products);
+        companyU.setProducts(productsU);
+        company.setAddress(new Address("48 Ben Zion Galis St. Petach Tikva 4927948-Israel","+972-73-324-2761","Israel","Petach Tikva"));
+        companyU.setAddress(new Address("48 Ben Zion Galis St. Petach Tikva 4927948-Israel","+972-73-324-2761" ,"Israel","Petach Tikva"));
+        User userA = new User("admin", passwordEncoder.encode("admin"),"daniel@vayusense.com","Y",company, true, Arrays.asList(Role.ROLE_ADMIN));
+        User user = new User("algo", passwordEncoder.encode("algo"),"algo@teva.com","N",companyU, true, Arrays.asList(Role.ROLE_USER));
+        //User userA = new User("eppen", passwordEncoder.encode("eppen"),"eppen@eppen.com","N",companyU, true, Arrays.asList(Role.ROLE_EPPEN_USER));
         userRepository.saveAll(Flux.just(user,userA)).doOnError(e -> {
             log.error("find an error while user creating ", e);
-        }).log().subscribe();
+    }).log().subscribe();
 
-    }*/
-
+    }
+*/
     public Mono<ServerResponse> getToken(ServerRequest serverRequest) {
         Mono<User> userMono = serverRequest.bodyToMono(User.class);
         return userMono.flatMap(user -> userRepository.findByUsername(user.getUsername())
                     .flatMap(userDetails -> {
                         if(userDetails.getPassword().equals(passwordEncoder.encode(user.getPassword()))){
-                            return ServerResponse.ok().bodyValue(new AuthResponse(jwtUtil.generateToken(userDetails)));
+                            return ServerResponse.ok().bodyValue(new AuthResponse(jwtUtil.generateToken(userDetails),userDetails.getCompany().getCompanyName(),userDetails.getCompany().getProducts()));
                         }else {
                             return ServerResponse.badRequest().build();
                         }

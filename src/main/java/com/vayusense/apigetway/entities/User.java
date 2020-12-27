@@ -25,14 +25,16 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String email;
-    private String company;
+    private String admin;
     private boolean enabled;
     private List<Role> roles;
+    private Company company;
 
-    public User(String username, String password, String email, String company, boolean enabled, List<Role> roles) {
+    public User(String username, String password, String email, String admin, Company company, boolean enabled, List<Role> roles) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.admin = admin;
         this.company = company;
         this.enabled = enabled;
         this.roles = roles;

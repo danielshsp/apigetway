@@ -42,6 +42,7 @@ public class SecurityConfig {
                 .pathMatchers("/auth/login").permitAll()
                 .pathMatchers("/actuator/**").permitAll()
                 .pathMatchers(HttpMethod.GET,"/api/v1/message").hasAnyRole("USER","ADMIN")
+                .pathMatchers(HttpMethod.GET,"/api/v1/backend/page/state/**").hasAnyRole("USER","ADMIN")
                 .pathMatchers(HttpMethod.GET,"/login").hasRole("ADMIN")
                 .anyExchange().authenticated()
                 .and().build();

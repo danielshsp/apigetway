@@ -14,10 +14,12 @@ public class RouteConfig {
                 .route(r -> r.path("/login/**")
                         .uri("http://localhost:8761/")
                         .id("monitoredModule"))
-
-                .route(r -> r.path("/api/v1/auth/**")
-                        .uri("http://localhost:8082/")
-                        .id("authModule"))
+                .route(r -> r.path("/auth/login/**")
+                        .uri("http://localhost:8080/")
+                        .id("apigetway"))
+                .route(r -> r.path("/api/v1/backend/**")
+                        .uri("http://localhost:8085/")
+                        .id("backendModule"))
                 .build();
     }
 }
