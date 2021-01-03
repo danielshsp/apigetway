@@ -21,7 +21,7 @@ public class IndexConfig {
     public void initIndex() {
         mongoTemplate.indexOps(User.class).ensureIndex(new Index().unique().on("username", Sort.Direction.ASC));
         mongoTemplate.indexOps(User.class).ensureIndex(new Index().unique().on("email", Sort.Direction.ASC));
-        mongoTemplate.indexOps(User.class).ensureIndex(new Index().on("company", Sort.Direction.ASC));
+        mongoTemplate.indexOps(User.class).ensureIndex(new Index().on("admin", Sort.Direction.ASC));
         initTimeZone();
 
     }

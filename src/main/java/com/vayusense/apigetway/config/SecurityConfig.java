@@ -11,6 +11,7 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import reactor.core.publisher.Mono;
 
+@Configuration
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
 @AllArgsConstructor
@@ -41,7 +42,7 @@ public class SecurityConfig {
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()
                 .pathMatchers("/auth/login").permitAll()
                 .pathMatchers("/actuator/**").permitAll()
-                .pathMatchers(HttpMethod.GET,"/api/v1/message").hasAnyRole("USER","ADMIN")
+                .pathMatchers(HttpMethod.GET,"/api/v1/user/**").hasAnyRole("USER","ADMIN")
                 .pathMatchers(HttpMethod.GET,"/api/v1/backend/page/state/**").hasAnyRole("USER","ADMIN")
                 .pathMatchers(HttpMethod.GET,"/login").hasRole("ADMIN")
                 .anyExchange().authenticated()
