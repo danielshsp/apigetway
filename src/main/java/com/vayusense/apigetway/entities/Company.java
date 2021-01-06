@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class Company {
-    private String companyName;
+    private String name;
     private Address address;
-    private List<String> products;
+    private List<String> product;
 }

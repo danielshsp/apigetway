@@ -23,6 +23,8 @@ public class User implements UserDetails {
     private String id;
     private String username;
     private String password;
+    private String firstName;
+    private String lastName;
     private String email;
     private String admin;
     @Field("enabled")
@@ -30,9 +32,11 @@ public class User implements UserDetails {
     private List<Role> roles;
     private Company company;
 
-    public User(String username, String password, String email, String admin, Company company, boolean isEnabled, List<Role> roles) {
+    public User(String username, String password,String firstName,String lastName, String email, String admin, Company company, boolean isEnabled, List<Role> roles) {
         this.username = username;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.admin = admin;
         this.company = company;
