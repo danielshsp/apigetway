@@ -44,6 +44,7 @@ public class SecurityConfig {
                 .pathMatchers("/actuator/**").permitAll()
                 .pathMatchers(HttpMethod.GET,"/api/v1/user/**").hasAnyRole("USER","ADMIN")
                 .pathMatchers(HttpMethod.GET,"/api/v1/backend/page/state/**").hasAnyRole("USER","ADMIN")
+                .pathMatchers(HttpMethod.POST,"/api/v1/backend/graphql").hasAnyRole("USER","ADMIN")
                 .pathMatchers(HttpMethod.GET,"/login").hasRole("ADMIN")
                 .anyExchange().authenticated()
                 .and().build();
