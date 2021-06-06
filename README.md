@@ -1,9 +1,9 @@
 # apigetway
 Apigetway+usermanger+router webflux+ JWT autenticated service
 
-    apigetway include autentecation service build-in are supported by nobloc and blockink by spring cloud apigetway(new).
+    apigetway include autentecation service build-in are supported by noblock and blocking by spring cloud apigetway(new).
     all the users manage in the mongo domain include rule.
-    there is cross global and filter for secure the subsystem.
+    there is global cross and filter for secure the subsystem.
 
  guide webflux jwt:
  
