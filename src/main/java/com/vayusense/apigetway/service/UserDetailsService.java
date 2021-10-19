@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 */
-
+//Exclude the code below to the authentication service
 @Service
 //@Slf4j
 @AllArgsConstructor
