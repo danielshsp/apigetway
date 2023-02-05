@@ -9,7 +9,7 @@
  
     https://ard333.medium.com/authentication-and-authorization-using-jwt-on-spring-webflux-29b81f813e78
     
- ## knowlegments - creation of custom annotation
+ ## knowledge base - creation of custom annotation
  
      https://fullstackdeveloper.guru/2021/06/15/how-to-create-a-custom-annotation-in-spring-boot/
      https://blog.clairvoyantsoft.com/spring-boot-creating-a-custom-annotation-for-validation-edafbf9a97a4
